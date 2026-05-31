@@ -7,13 +7,8 @@ import {
 import { config } from "./config";
 
 export default {
-  async fetch(req) {
-    const url = new URL(req.url);
-    url.pathname = "/__scheduled";
-    url.searchParams.append("cron", "* * * * *");
-    return new Response(
-      `To test the scheduled handler, ensure you have used the "--test-scheduled" then try running "curl ${url.href}".`,
-    );
+  async fetch() {
+    return new Response("cloudflare-audit-logger is up.");
   },
 
   async scheduled(_event, env, ctx): Promise<void> {
