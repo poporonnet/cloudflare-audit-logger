@@ -57,7 +57,6 @@ export default {
     for (const log of logs) {
       const body: RESTPostAPIWebhookWithTokenJSONBody = {
         username: "Cloudflare Audit Log",
-        avatar_url: "https://github.com/tufusa.png",
         embeds: [
           {
             title: `[${log.action?.type}] ${log.resource?.product ?? ""}/${log.resource?.type ?? ""}`,
