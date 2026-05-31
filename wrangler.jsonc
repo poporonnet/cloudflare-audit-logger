@@ -1,7 +1,10 @@
 {
+  "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "cloudflare-audit-logger",
   "main": "src/index.ts",
   "compatibility_date": "2026-05-21",
+  "keep_vars": true,
+  "minify": true,
   "observability": {
     "enabled": true
   },
@@ -13,7 +16,7 @@
   "kv_namespaces": [
     {
       "binding": "CLOUDFLARE_AUDIT_LOGGER",
-      "id": "cloudflare-audit-logger"
+      "id": "dfee274f305c4c85bc9de94413fa358e"
     }
   ]
 }
