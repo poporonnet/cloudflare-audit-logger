@@ -32,7 +32,7 @@ export default {
     since.setMilliseconds(since.getMilliseconds() + 1);
 
     const res = await cloudflare.accounts.logs.audit.list({
-      account_id: "f208797981323b5cf2014d1be7fcfaff",
+      account_id: env.CLOUDFLARE_ACCOUNT_ID,
       since: since.toISOString(),
       before: nowTimestamp,
       direction: "asc",
