@@ -1,5 +1,6 @@
 export const config = {
   exclude: [
+    { action: { type: "view" } },
     { resource: { product: "workers", type: "scripts.deployments" } },
     { resource: { product: "workers", type: "scripts.versions" } },
     { resource: { product: "workers", type: "scripts.subdomain" } },
