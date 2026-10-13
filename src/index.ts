@@ -38,13 +38,26 @@ export default {
       direction: "asc",
     });
 
+    const isExcluded = (
+      log: Cloudflare.Accounts.Logs.Audit.AuditListResponse,
+      exclude: (typeof config.exclude)[number],
+    ): boolean => {
+      if (exclude.action && exclude.action.type !== log.action?.type) {
+        return false;
+      }
+      if (
+        exclude.resource &&
+        (exclude.resource.product !== log.resource?.product ||
+          exclude.resource.type !== log.resource.type)
+      ) {
+        return false;
+      }
+
+      return true;
+    };
+
     const logs = res.result.filter(
-      (log) =>
-        !config.exclude.some(
-          (exclude) =>
-            log.resource?.product === exclude.resource.product &&
-            log.resource?.type === exclude.resource.type,
-        ),
+      (log) => !config.exclude.some((exclude) => isExcluded(log, exclude)),
     );
 
     const lastLoggedTime = logs.at(-1)?.action?.time;
