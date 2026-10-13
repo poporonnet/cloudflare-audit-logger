@@ -60,7 +60,7 @@ export default {
       (log) => !config.exclude.some((exclude) => isExcluded(log, exclude)),
     );
 
-    const lastLoggedTime = logs.at(-1)?.action?.time;
+    const lastLoggedTime = res.result.at(-1)?.action?.time;
     if (lastLoggedTime) {
       ctx.waitUntil(
         env.CLOUDFLARE_AUDIT_LOGGER.put("LAST_LOGGED", lastLoggedTime),
